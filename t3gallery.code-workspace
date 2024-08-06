@@ -5,6 +5,15 @@
     },
   ],
   "settings": {
-    "cSpell.words": ["CLIENTVAR", "clsx", "lucide", "nextjs", "runtimes", "tailwindcss", "utfs"],
+    "cSpell.words": [
+      "CLIENTVAR",
+      "clsx",
+      "lucide",
+      "nextjs",
+      "runtimes",
+      "tailwindcss",
+      "utfs",
+    ],
+    "typescript.tsdk": "node_modules\\typescript\\lib",
   },
 }
