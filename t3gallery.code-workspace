@@ -5,6 +5,13 @@
     },
   ],
   "settings": {
-    "cSpell.words": ["CLIENTVAR", "nextjs", "runtimes", "tailwindcss", "utfs"],
+    "cSpell.words": [
+      "CLIENTVAR",
+      "lucide",
+      "nextjs",
+      "runtimes",
+      "tailwindcss",
+      "utfs",
+    ],
   },
 }
