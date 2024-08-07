@@ -36,7 +36,8 @@ const PhotoModal = async ({ params: { id: photoId } }: Props) => {
           </p>
         </div>
         <p className="absolute bottom-2 right-2">
-          Uploaded By : {uploaderInfo?.fullName}
+          Uploaded By : {uploaderInfo?.fullName} on{" "}
+          {new Date(image.createdAt).toLocaleString()}
         </p>
       </div>
     </Modal>
