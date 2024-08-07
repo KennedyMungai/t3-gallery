@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getMyImage } from "~/server/queries";
+import { Modal } from "./modal";
 
 type Props = {
   params: {
@@ -14,7 +15,11 @@ const PhotoModal = async ({ params: { id: photoId } }: Props) => {
 
   const image = await getMyImage(photoIdNum);
 
-  return <Image src={image.url} width={200} height={200} alt={image.name} />;
+  return (
+    <Modal>
+      <Image src={image.url} width={200} height={200} alt={image.name} />
+    </Modal>
+  );
 };
 
 export default PhotoModal;
