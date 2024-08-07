@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { db } from "~/server/db";
+import { UploadButton } from "~/utils/uploadthing";
 
 export const dynamic = "force-dynamic";
 
@@ -24,6 +25,7 @@ const HomePage = async () => {
             </div>
           ))}
         </div>
+        <UploadButton endpoint={"imageUploader"} />
       </div>
     </main>
   );

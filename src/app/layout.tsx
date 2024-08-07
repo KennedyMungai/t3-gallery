@@ -1,6 +1,7 @@
 import "~/styles/globals.css";
 
 import { ClerkProvider } from "@clerk/nextjs";
+import "@uploadthing/react/styles.css";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 import TopNav from "~/components/top-nav";
@@ -28,3 +29,4 @@ export default function RootLayout({
     </ClerkProvider>
   );
 }
+  

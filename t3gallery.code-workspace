@@ -6,6 +6,7 @@
   ],
   "settings": {
     "cSpell.words": [
+      "clientside",
       "CLIENTVAR",
       "clsx",
       "lucide",
@@ -13,6 +14,7 @@
       "runtimes",
       "tailwindcss",
       "trpc",
+      "Uploadthing",
       "utfs",
     ],
     "typescript.tsdk": "node_modules\\typescript\\lib",
