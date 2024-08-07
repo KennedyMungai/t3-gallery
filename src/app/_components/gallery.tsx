@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { UploadButton } from "~/utils/uploadthing";
 
@@ -22,14 +23,16 @@ const Gallery = ({ images }: Props) => {
       <div className="flex flex-wrap gap-4">
         {images.map((image) => (
           <div key={image.id} className="p-4">
-            <Image
-              src={image.url}
-              height={120}
-              width={120}
-              alt={image.id.toString()}
-              className="rounded-sm"
-            />
-            <div>{image.name}</div>
+            <Link href={`/img/${image.id}`}>
+              <Image
+                src={image.url}
+                height={120}
+                width={120}
+                alt={image.id.toString()}
+                className="rounded-sm"
+              />
+              <div>{image.name}</div>
+            </Link>
           </div>
         ))}
       </div>

@@ -4,6 +4,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import "@uploadthing/react/styles.css";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
+import { type ReactNode } from "react";
 import TopNav from "~/components/top-nav";
 import { ThemeProvider } from "~/providers/theme-provider";
 
@@ -15,7 +16,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+  modal,
+}: Readonly<{ children: ReactNode; modal: ReactNode }>) {
   return (
     <ClerkProvider>
       <html lang="en" className={`${GeistSans.variable}`}>
@@ -23,10 +25,11 @@ export default function RootLayout({
           <ThemeProvider>
             <TopNav />
             {children}
+            {modal}
+            <div id="modal-root" />
           </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
   );
 }
-  
