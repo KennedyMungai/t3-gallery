@@ -14,7 +14,7 @@ const TopNav = async () => {
   const user = await currentUser();
 
   return (
-    <nav className="flex w-full items-center justify-between border-b p-4 text-2xl font-semibold shadow-sm">
+    <nav className="mb-4 flex h-24 w-full items-center justify-between border-b p-4 text-2xl font-semibold shadow-sm">
       <Link href="/">
         <div>Gallery</div>
       </Link>
