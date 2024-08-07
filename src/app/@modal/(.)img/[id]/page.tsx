@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { getMyImage } from "~/server/queries";
 import { Modal } from "./modal";
+import { clerkClient } from "@clerk/nextjs/server";
 
 type Props = {
   params: {
@@ -14,6 +15,8 @@ const PhotoModal = async ({ params: { id: photoId } }: Props) => {
   if (Number.isNaN(photoIdNum)) throw new Error("Invalid photo Id");
 
   const image = await getMyImage(photoIdNum);
+
+  const uploaderInfo = await clerkClient().users.getUser(image.userId);
 
   return (
     <Modal>
@@ -32,6 +35,9 @@ const PhotoModal = async ({ params: { id: photoId } }: Props) => {
             {image.name}
           </p>
         </div>
+        <p className="absolute bottom-2 right-2">
+          Uploaded By : {uploaderInfo?.fullName}
+        </p>
       </div>
     </Modal>
   );
