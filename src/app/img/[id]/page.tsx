@@ -8,7 +8,11 @@ type Props = {
 };
 
 const ImagePage = async ({ params: { id: photoId } }: Props) => {
-  const image = await getMyImage(Number(photoId));
+    const photoIdNum = Number(photoId);
+
+    if (Number.isNaN(photoIdNum)) throw new Error("Invalid photo Id");
+
+    const image = await getMyImage(photoIdNum);
 
   return (
     <div className="flex h-full items-center justify-center">
