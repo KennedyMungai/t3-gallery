@@ -1,6 +1,5 @@
-import Image from "next/image";
 import { db } from "~/server/db";
-import { UploadButton } from "~/utils/uploadthing";
+import Gallery from "./_components/gallery";
 
 export const dynamic = "force-dynamic";
 
@@ -11,22 +10,7 @@ const HomePage = async () => {
 
   return (
     <main>
-      <div className="flex flex-col gap-y-8">
-        <div className="flex flex-wrap gap-4">
-          {images.map((image) => (
-            <div key={image.id} className="p-4">
-              <Image
-                src={image.url}
-                height={100}
-                width={100}
-                alt={image.id.toString()}
-              />
-              <div>{image.name}</div>
-            </div>
-          ))}
-        </div>
-        <UploadButton endpoint={"imageUploader"} />
-      </div>
+      <Gallery images={images} />
     </main>
   );
 };
