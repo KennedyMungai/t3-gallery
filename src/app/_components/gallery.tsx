@@ -27,6 +27,7 @@ const Gallery = ({ images }: Props) => {
               height={100}
               width={100}
               alt={image.id.toString()}
+              className="rounded-sm"
             />
             <div>{image.name}</div>
           </div>
