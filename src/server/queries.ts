@@ -1,10 +1,9 @@
 import "server-only";
 import { db } from "./db";
-import { auth } from "@clerk/nextjs/server";
-
-const user = auth();
+import { auth, getAuth } from "@clerk/nextjs/server";
 
 export const getMyImages = async () => {
+  const user = auth();
   if (!user.userId) throw new Error("Unauthorized");
 
   return await db.query.images.findMany({
@@ -14,8 +13,6 @@ export const getMyImages = async () => {
 };
 
 export const getMyImage = async (id: number) => {
-  if (!user.userId) throw new Error("Unauthorized");
-
   const image = await db.query.images.findFirst({
     where: (model, { eq }) => eq(model.id, id),
   });

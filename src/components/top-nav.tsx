@@ -7,6 +7,7 @@ import {
 } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 import { Loader2Icon } from "lucide-react";
+import Link from "next/link";
 import { ModeToggle } from "./mode-toggle";
 
 const TopNav = async () => {
@@ -14,7 +15,10 @@ const TopNav = async () => {
 
   return (
     <nav className="flex w-full items-center justify-between border-b p-4 text-2xl font-semibold shadow-sm">
-      <div>Gallery</div>
+      <Link href="/">
+        <div>Gallery</div>
+      </Link>
+
       <div className="flex items-center justify-center gap-4">
         <ClerkLoading>
           <Loader2Icon className="size-8 animate-spin" />
