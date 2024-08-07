@@ -24,8 +24,8 @@ const Gallery = ({ images }: Props) => {
           <div key={image.id} className="p-4">
             <Image
               src={image.url}
-              height={100}
-              width={100}
+              height={120}
+              width={120}
               alt={image.id.toString()}
               className="rounded-sm"
             />
