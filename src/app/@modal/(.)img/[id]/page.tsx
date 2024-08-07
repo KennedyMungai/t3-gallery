@@ -14,7 +14,7 @@ const PhotoModal = async ({ params: { id: photoId } }: Props) => {
 
   const image = await getMyImage(photoIdNum);
 
-  return <Image src={image.url} width={120} height={120} alt={image.name} />;
+  return <Image src={image.url} width={200} height={200} alt={image.name} />;
 };
 
 export default PhotoModal;
