@@ -1,4 +1,10 @@
-import { ClerkLoaded, ClerkLoading, UserButton } from "@clerk/nextjs";
+import {
+  ClerkLoaded,
+  ClerkLoading,
+  SignedOut,
+  SignInButton,
+  UserButton,
+} from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 import { Loader2Icon } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
@@ -17,7 +23,9 @@ const TopNav = async () => {
           <span className="text-xl font-semibold">{user?.fullName}</span>
           <UserButton />
         </ClerkLoaded>
-
+        <SignedOut>
+          <SignInButton />
+        </SignedOut>
         <ModeToggle />
       </div>
     </nav>
