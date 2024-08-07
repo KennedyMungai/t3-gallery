@@ -12,3 +12,15 @@ export const getMyImages = async () => {
     orderBy: (model, { desc }) => desc(model.id),
   });
 };
+
+export const getMyImage = async (id: number) => {
+  if (!user.userId) throw new Error("Unauthorized");
+
+  const image = await db.query.images.findFirst({
+    where: (model, { eq }) => eq(model.id, id),
+  });
+
+  if (!image) throw new Error("Image not found");
+
+  return image;
+}; 
