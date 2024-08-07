@@ -18,6 +18,7 @@ const HomePage = async () => {
                 width={100}
                 alt={image.id.toString()}
               />
+              <div>{image.name}</div>
             </div>
           ))}
         </div>
