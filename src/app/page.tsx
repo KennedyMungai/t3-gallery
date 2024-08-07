@@ -1,10 +1,10 @@
-import { getImages } from "~/server/queries";
+import { getMyImages } from "~/server/queries";
 import Gallery from "./_components/gallery";
 
 export const dynamic = "force-dynamic";
 
 const HomePage = async () => {
-  const images = await getImages();
+  const images = await getMyImages();
 
   return (
     <main>
