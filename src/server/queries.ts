@@ -1,6 +1,6 @@
+import { auth } from "@clerk/nextjs/server";
 import "server-only";
 import { db } from "./db";
-import { auth, getAuth } from "@clerk/nextjs/server";
 
 export const getMyImages = async () => {
   const user = auth();
@@ -20,4 +20,4 @@ export const getMyImage = async (id: number) => {
   if (!image) throw new Error("Image not found");
 
   return image;
-}; 
+};
