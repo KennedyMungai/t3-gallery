@@ -19,7 +19,13 @@ const PhotoModal = async ({ params: { id: photoId } }: Props) => {
     <Modal>
       <div className="flex gap-x-4">
         <div className="flex-1">
-          <Image src={image.url} width={200} height={200} alt={image.name} />
+          <Image
+            src={image.url}
+            width={200}
+            height={200}
+            alt={image.name}
+            className="rounded-lg object-contain"
+          />
         </div>
         <div className="flex flex-1 items-center justify-center">
           <p className="text-center text-2xl font-semibold text-white">
