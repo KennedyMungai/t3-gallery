@@ -12,6 +12,7 @@
       "nextjs",
       "runtimes",
       "tailwindcss",
+      "trpc",
       "utfs",
     ],
     "typescript.tsdk": "node_modules\\typescript\\lib",

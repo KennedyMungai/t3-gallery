@@ -1,9 +1,10 @@
 import "~/styles/globals.css";
 
+import { ClerkProvider } from "@clerk/nextjs";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
-import { ThemeProvider } from "~/providers/theme-provider";
 import TopNav from "~/components/top-nav";
+import { ThemeProvider } from "~/providers/theme-provider";
 
 export const metadata: Metadata = {
   title: "T3 Gallery",
@@ -15,13 +16,15 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${GeistSans.variable}`}>
-      <body className="gap-y-4 flex flex-col">
-        <ThemeProvider>
-          <TopNav />
-          {children}
-        </ThemeProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" className={`${GeistSans.variable}`}>
+        <body className="flex flex-col gap-y-4">
+          <ThemeProvider>
+            <TopNav />
+            {children}
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
