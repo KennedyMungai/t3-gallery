@@ -23,6 +23,7 @@ const TopNav = async () => {
           <span className="text-xl font-semibold">{user?.fullName}</span>
           <UserButton />
         </ClerkLoaded>
+        {/* This is basically useless */}
         <SignedOut>
           <SignInButton />
         </SignedOut>
