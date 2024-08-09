@@ -5,9 +5,10 @@ import "@uploadthing/react/styles.css";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 import { type ReactNode } from "react";
+import { CSPostHogProvider } from "~/app/_analytics/provider";
 import TopNav from "~/components/top-nav";
-import { ThemeProvider } from "~/providers/theme-provider";
 import { Toaster } from "~/components/ui/sonner";
+import { ThemeProvider } from "~/providers/theme-provider";
 
 export const metadata: Metadata = {
   title: "T3 Gallery",
@@ -21,19 +22,21 @@ export default function RootLayout({
 }: Readonly<{ children: ReactNode; modal: ReactNode }>) {
   return (
     <ClerkProvider>
-      <html lang="en" className={`${GeistSans.variable}`}>
-        <body>
-          <ThemeProvider>
-            <div className="grid-rows-[auto, 1fr] grid h-screen">
-              <TopNav />
-              <main className="overflow-y-scroll">{children}</main>
-            </div>
-            {modal}
-            <div id="modal-root" />
-          </ThemeProvider>
-          <Toaster />
-        </body>
-      </html>
+      <CSPostHogProvider>
+        <html lang="en" className={`${GeistSans.variable}`}>
+          <body>
+            <ThemeProvider>
+              <div className="grid-rows-[auto, 1fr] grid h-screen">
+                <TopNav />
+                <main className="overflow-y-scroll">{children}</main>
+              </div>
+              {modal}
+              <div id="modal-root" />
+            </ThemeProvider>
+            <Toaster />
+          </body>
+        </html>
+      </CSPostHogProvider>
     </ClerkProvider>
   );
 }
