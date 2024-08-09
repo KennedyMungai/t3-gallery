@@ -2,6 +2,7 @@
 
 import { LoaderIcon, UploadIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { usePostHog } from "posthog-js/react";
 import { toast } from "sonner";
 import { useUploadThing } from "~/utils/uploadthing";
 
@@ -34,17 +35,20 @@ const useUploadThingInputProps = (...args: Input) => {
 export const SimpleUploadButton = () => {
   const router = useRouter();
 
+  const posthog = usePostHog();
+
   const { inputProps } = useUploadThingInputProps("imageUploader", {
     onUploadBegin() {
-      toast(
-        <div className="flex gap-x-2">
-          <LoaderIcon className="animate-spin" /> Uploading...
-        </div>,
-        {
-          duration: 500000,
-          id: "upload-begin",
-        },
-      );
+      posthog.capture("Upload begin"),
+        toast(
+          <div className="flex gap-x-2">
+            <LoaderIcon className="animate-spin" /> Uploading...
+          </div>,
+          {
+            duration: 500000,
+            id: "upload-begin",
+          },
+        );
     },
     onClientUploadComplete() {
       router.refresh();
