@@ -31,8 +31,8 @@ const PhotoModal = async ({ params: { id: photoId } }: Props) => {
           />
         </div>
         <div className="flex flex-1 items-center justify-center">
-          <p className="text-center text-2xl font-semibold text-white">
-            {image.name}
+          <p className="text-center text-2xl font-semibold uppercase text-white">
+            {image.name.split(".")[0]}
           </p>
         </div>
         <p className="absolute bottom-2 right-2">
