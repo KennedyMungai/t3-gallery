@@ -7,6 +7,7 @@ import { type Metadata } from "next";
 import { type ReactNode } from "react";
 import TopNav from "~/components/top-nav";
 import { ThemeProvider } from "~/providers/theme-provider";
+import { Toaster } from "~/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "T3 Gallery",
@@ -26,6 +27,7 @@ export default function RootLayout({
             <div className="grid-rows-[auto, 1fr] grid h-screen">
               <TopNav />
               <main className="overflow-y-scroll">{children}</main>
+              <Toaster />
             </div>
             {modal}
             <div id="modal-root" />

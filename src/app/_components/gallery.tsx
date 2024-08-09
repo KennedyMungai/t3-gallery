@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { UploadButton } from "~/utils/uploadthing";
+import { SimpleUploadButton } from "./simple_upload_button";
 
 type Props = {
   images: {
@@ -16,8 +15,6 @@ type Props = {
 };
 
 const Gallery = ({ images }: Props) => {
-  const router = useRouter();
-
   return (
     <div className="flex flex-col gap-y-8">
       <div className="flex flex-wrap gap-4">
@@ -36,10 +33,7 @@ const Gallery = ({ images }: Props) => {
           </div>
         ))}
       </div>
-      <UploadButton
-        endpoint={"imageUploader"}
-        onClientUploadComplete={() => router.refresh()}
-      />
+      <SimpleUploadButton />
     </div>
   );
 };
