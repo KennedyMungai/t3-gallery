@@ -1,5 +1,6 @@
 "use client";
 
+import { UploadIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useUploadThing } from "~/utils/uploadthing";
 
@@ -40,7 +41,9 @@ export const SimpleUploadButton = () => {
 
   return (
     <div>
-      <label htmlFor="upload-button">Upload Button</label>
+      <label htmlFor="upload-button" className="cursor-pointer">
+        <UploadIcon />
+      </label>
       <input
         id="upload-button"
         type="file"
