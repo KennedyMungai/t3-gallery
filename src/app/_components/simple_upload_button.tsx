@@ -1,6 +1,6 @@
 "use client";
 
-import { UploadIcon } from "lucide-react";
+import { LoaderIcon, UploadIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useUploadThing } from "~/utils/uploadthing";
@@ -36,10 +36,15 @@ export const SimpleUploadButton = () => {
 
   const { inputProps } = useUploadThingInputProps("imageUploader", {
     onUploadBegin() {
-      toast("Uploading image...", {
-        duration: 500000,
-        id: "upload-begin",
-      });
+      toast(
+        <div className="flex gap-x-2">
+          <LoaderIcon className="animate-spin" /> Uploading...
+        </div>,
+        {
+          duration: 500000,
+          id: "upload-begin",
+        },
+      );
     },
     onClientUploadComplete() {
       router.refresh();
