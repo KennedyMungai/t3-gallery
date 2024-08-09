@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import "server-only";
 import { db } from "./db";
 import { images } from "./db/schema";
+import analyticsServerClient from "./analytics";
 
 export const getMyImages = async () => {
   const user = auth();
@@ -32,6 +33,14 @@ export const deleteMyImage = async (id: number) => {
   if (!image) throw new Error("Image not found");
 
   await db.delete(images).where(eq(images.id, id));
+
+  analyticsServerClient.capture({
+    distinctId: image.indexOf.toString(),
+    event: "Image Deleted",
+    properties: {
+      imageId: id,
+    },
+  });
 
   revalidatePath("/");
   redirect("/");
