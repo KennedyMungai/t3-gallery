@@ -2,6 +2,8 @@ import Image from "next/image";
 import { getMyImage } from "~/server/queries";
 import { Modal } from "./modal";
 import { clerkClient } from "@clerk/nextjs/server";
+import { Trash2Icon } from "lucide-react";
+import { Button } from "~/components/ui/button";
 
 type Props = {
   params: {
@@ -35,10 +37,19 @@ const PhotoModal = async ({ params: { id: photoId } }: Props) => {
             {image.name.split(".")[0]}
           </p>
         </div>
-        <p className="absolute bottom-2 right-2">
-          Uploaded By : {uploaderInfo?.fullName} on{" "}
-          {new Date(image.createdAt).toLocaleDateString()}
-        </p>
+        <div className="absolute bottom-2 right-2 flex items-center justify-center gap-x-4 text-white dark:text-white">
+          <p>
+            Uploaded By : {uploaderInfo?.fullName} on{" "}
+            {new Date(image.createdAt).toLocaleDateString()}
+          </p>
+          <Button
+            size="icon"
+            variant={"outline"}
+            className="text-red dark:text-red border-red-500 bg-transparent"
+          >
+            <Trash2Icon />
+          </Button>
+        </div>
       </div>
     </Modal>
   );
