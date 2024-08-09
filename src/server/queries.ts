@@ -1,6 +1,10 @@
 import { auth } from "@clerk/nextjs/server";
+import { eq } from "drizzle-orm";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import "server-only";
 import { db } from "./db";
+import { images } from "./db/schema";
 
 export const getMyImages = async () => {
   const user = auth();
@@ -20,4 +24,15 @@ export const getMyImage = async (id: number) => {
   if (!image) throw new Error("Image not found");
 
   return image;
+};
+
+export const deleteMyImage = async (id: number) => {
+  const image = await db.select().from(images).where(eq(images.id, id));
+
+  if (!image) throw new Error("Image not found");
+
+  await db.delete(images).where(eq(images.id, id));
+
+  revalidatePath("/");
+  redirect("/");
 };

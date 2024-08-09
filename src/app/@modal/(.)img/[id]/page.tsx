@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { getMyImage } from "~/server/queries";
+import { deleteMyImage, getMyImage } from "~/server/queries";
 import { Modal } from "./modal";
 import { clerkClient } from "@clerk/nextjs/server";
 import { Trash2Icon } from "lucide-react";
@@ -42,13 +42,21 @@ const PhotoModal = async ({ params: { id: photoId } }: Props) => {
             Uploaded By : {uploaderInfo?.fullName} on{" "}
             {new Date(image.createdAt).toLocaleDateString()}
           </p>
-          <Button
-            size="icon"
-            variant={"outline"}
-            className="text-red dark:text-red border-red-500 bg-transparent"
+          <form
+            action={async () => {
+              "use server";
+
+              await deleteMyImage(image.id);
+            }}
           >
-            <Trash2Icon />
-          </Button>
+            <Button
+              size="icon"
+              variant={"outline"}
+              className="text-red dark:text-red border-red-500 bg-transparent"
+            >
+              <Trash2Icon />
+            </Button>
+          </form>
         </div>
       </div>
     </Modal>
