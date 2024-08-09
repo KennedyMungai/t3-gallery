@@ -50,6 +50,11 @@ export const SimpleUploadButton = () => {
           },
         );
     },
+    onUploadError(error) {
+      posthog.capture("Upload Error", { error });
+      toast.dismiss("upload-begin");
+      toast.error("Upload Failed");
+    },
     onClientUploadComplete() {
       router.refresh();
       toast.dismiss("upload-begin");
